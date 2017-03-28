@@ -1,0 +1,8 @@
+<launch>
+
+	<!-- model -->
+	<include file="$(find beam_joy)/launch/beam_model.launch"/>
+
+	<include file="$(find beam_joy)/launch/hokuyo_laser.launch"/>
+
+</launch>

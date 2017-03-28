@@ -1,0 +1,36 @@
+  global_frame: odom
+  robot_base_frame: base_link
+  update_frequency: 2.0
+  publish_frequency: 1.0
+  static_map: false
+  rolling_window: true
+  width: 10.0
+  height: 10.0
+  resolution: 0.1
+  always_send_full_costmap: false
+
+  plugins:
+    - {name: occam_obstacles,   type: "costmap_2d::VoxelLayer"}
+    - {name: flat_obstacles,    type: "costmap_2d::ObstacleLayer"}
+
+  occam_obstacles:
+    observation_sources: occam
+    occam: {
+        sensor_frame: base_link,
+        data_type: PointCloud2,
+        topic: "/occam/local_points",
+        marking: true,
+        clearing: true,
+        min_obstacle_height: 0.25,
+        max_obstacle_height: 1.9
+    }
+
+  flat_obstacles:
+    observation_sources: hokuyo
+    hokuyo: {
+        sensor_frame: laser,
+        data_type: LaserScan,
+        topic: /beam/scan,
+        marking: true,
+        clearing: true
+    }

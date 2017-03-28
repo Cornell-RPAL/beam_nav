@@ -1,0 +1,12 @@
+<launch>
+
+	<!-- model -->
+	<include file="$(find teambeam_launch)/launch/essentials.launch"/>
+
+  <include file="$(find occam)/launch/occam.launch"/>
+
+  <include file="$(find teambeam_launch)/launch/gmapping.launch"/>
+
+  <include file="$(find teambeam_launch)/launch/move_base.launch"/>
+
+</launch>
