@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import rospy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import *
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import Joy
 import time
@@ -17,6 +17,7 @@ class Follower:
 		rospy.init_node('Follower')
 		# odom tester
 		# self.odom_pub = rospy.Publisher('/beam/odom', Odometry, queue_size=1)
+		rospy.Subscriber("/%s_mott" % robot, Mott, self.MottCallback, queue_size = 1)
 
 		self.tfl = tf.TransformListener()
 
@@ -24,7 +25,7 @@ class Follower:
 		self.FIXED_FRAME = "odom"
 		self.BASE_FRAME = "base_link"
 
-		# publishes fake odometry at 10 Hz
+		# iterates at 10 Hz
 		rate = rospy.Rate(10)
 		while not rospy.is_shutdown():
 			time = rospy.Time.now()

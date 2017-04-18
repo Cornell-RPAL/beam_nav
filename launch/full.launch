@@ -3,7 +3,7 @@
   <!-- model -->
   <include file="$(find beam_nav)/launch/essentials.launch"/>
 
-  <include file="$(find occam)/launch/occam.launch"/>
+  <!-- <include file="$(find occam)/launch/occam.launch"/> -->
 
   <include file="$(find beam_nav)/launch/gmapping.launch"/>
 
