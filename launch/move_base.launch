@@ -1,6 +1,8 @@
 <launch>
   <!-- Run the map server -->
-  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find beam_nav)/maps/map-2017.02.24-15.04.10.pgm 0.05"/> -->
+  <arg name="map_file" default="map-2017.04.18-17.23.02.pgm"/>
+  <arg name="map_res" default="0.05"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find beam_nav)/maps/$(arg map_file) $(arg map_res)"/>
 
   <!--- Run AMCL -->
   <!--<include file="$(find amcl)/examples/amcl_omni.launch" />-->
